@@ -7,7 +7,7 @@ export function ProjectsPage() {
 
   return (
     <>
-      <main className="relative mx-auto max-w-7xl overflow-hidden px-5 py-20">
+      <main className="relative mx-auto max-w-7xl px-5 py-20">
         <div className="pointer-events-none absolute right-[10%] top-[-12rem] h-[28rem] w-[28rem] rounded-full bg-brand-cyan/20 blur-[120px]" />
         <div className="relative z-10 mb-14 max-w-3xl">
           <p className="mb-2 text-sm font-semibold uppercase tracking-wider text-clay">

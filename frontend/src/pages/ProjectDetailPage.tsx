@@ -35,9 +35,9 @@ export function ProjectDetailPage() {
 
   return (
     <>
-      <main className="relative mx-auto max-w-7xl overflow-hidden px-5 py-16">
-        <div className="pointer-events-none absolute right-[-10rem] top-[5%] h-[28rem] w-[28rem] rounded-full bg-brand-cyan/20 blur-[120px]" />
-        <div className="pointer-events-none absolute left-[-8rem] top-[40%] h-[20rem] w-[20rem] rounded-full bg-brand-neon/20 blur-[100px]" />
+      <main className="relative mx-auto max-w-7xl px-5 py-16">
+        <div className="pointer-events-none absolute right-0 top-[5%] h-[28rem] w-[28rem] -translate-x-1/2 rounded-full bg-brand-cyan/20 blur-[120px]" />
+        <div className="pointer-events-none absolute left-0 top-[40%] h-[20rem] w-[20rem] -translate-x-1/2 rounded-full bg-brand-neon/20 blur-[100px]" />
 
         <Link
           to="/projects"
@@ -103,8 +103,10 @@ export function ProjectDetailPage() {
           <h2 className="font-display text-4xl italic text-ink">
             Project overview
           </h2>
+
           <div className="mt-8 h-px w-full bg-gradient-to-r from-clay/40 to-transparent" />
-          <p className="mt-8 whitespace-pre-line text-lg leading-relaxed text-graphite">
+
+          <p className="mt-8 flex flex-wrap overflow-x-hidden whitespace-pre-line text-lg leading-relaxed text-graphite">
             {project.description}
           </p>
         </section>

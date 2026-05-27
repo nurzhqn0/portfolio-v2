@@ -19,7 +19,7 @@ export function LandingPage() {
   if (isProfileLoading) {
     return (
       <>
-        <main className="relative overflow-hidden pt-8">
+        <main className="relative pt-8">
           <div className="relative z-10 mx-auto grid max-w-7xl gap-7 px-5 py-8 lg:grid-cols-[1.12fr_.88fr] lg:py-12">
             <div className="glass-panel min-h-[470px] rounded-[28px] p-7 sm:p-10 lg:p-12">
               <div className="h-5 w-64 rounded-full bg-ink/10" />
@@ -38,7 +38,7 @@ export function LandingPage() {
 
   return (
     <>
-      <main className="relative overflow-hidden pt-8">
+      <main className="relative overflow-x-hidden pt-8">
         <div className="pointer-events-none absolute right-[-6rem] top-[-8rem] h-[28rem] w-[28rem] rounded-full bg-brand-cyan/20 blur-[110px]" />
         <div className="pointer-events-none absolute bottom-[18%] left-[-8rem] h-[24rem] w-[24rem] rounded-full bg-brand-neon/20 blur-[100px]" />
 
@@ -109,7 +109,7 @@ export function LandingPage() {
               All projects
               <ArrowRight
                 size={16}
-                className="ml-2 -translate-x-2 opacity-0 transition-all group-hover:translate-x-0 group-hover:opacity-100"
+                className="ml-2 -translate-x-2 transition-all group-hover:translate-x-0"
               />
             </Link>
           </div>

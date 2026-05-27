@@ -4,8 +4,17 @@ import { Profile } from "../types/profile";
 import { Project } from "../types/project";
 import { getToken } from "./auth";
 
+const configuredApiBaseUrl = import.meta.env.VITE_API_BASE_URL;
+const isLocalBrowser =
+  typeof window !== "undefined" &&
+  ["localhost", "127.0.0.1"].includes(window.location.hostname);
+
 export const API_BASE_URL =
-  import.meta.env.VITE_API_BASE_URL ?? "http://localhost:8000";
+  configuredApiBaseUrl !== undefined
+    ? configuredApiBaseUrl
+    : isLocalBrowser
+      ? "http://localhost:8000"
+      : "";
 
 const API_PREFIX = `${API_BASE_URL}/api/v1`;
 

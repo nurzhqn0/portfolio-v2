@@ -1,24 +1,25 @@
-import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
+import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 
-import { api, type ContactLink } from '../../lib/api';
+import { api } from "../../lib/api";
+import { ContactLink } from "../../types/contactLink";
 
 export function useContactLinks() {
   return useQuery({
-    queryKey: ['contact-links'],
+    queryKey: ["contact-links"],
     queryFn: api.getContactLinks,
   });
 }
 
 export function useAdminContactLinks() {
   return useQuery({
-    queryKey: ['admin-contact-links'],
+    queryKey: ["admin-contact-links"],
     queryFn: api.listAdminContactLinks,
   });
 }
 
 export function useMessages() {
   return useQuery({
-    queryKey: ['messages'],
+    queryKey: ["messages"],
     queryFn: api.listMessages,
   });
 }
@@ -26,10 +27,11 @@ export function useMessages() {
 export function useCreateContactLink() {
   const queryClient = useQueryClient();
   return useMutation({
-    mutationFn: (payload: Partial<ContactLink>) => api.createContactLink(payload),
+    mutationFn: (payload: Partial<ContactLink>) =>
+      api.createContactLink(payload),
     onSuccess: () => {
-      queryClient.invalidateQueries({ queryKey: ['contact-links'] });
-      queryClient.invalidateQueries({ queryKey: ['admin-contact-links'] });
+      queryClient.invalidateQueries({ queryKey: ["contact-links"] });
+      queryClient.invalidateQueries({ queryKey: ["admin-contact-links"] });
     },
   });
 }
@@ -37,11 +39,16 @@ export function useCreateContactLink() {
 export function useUpdateContactLink() {
   const queryClient = useQueryClient();
   return useMutation({
-    mutationFn: ({ id, payload }: { id: number; payload: Partial<ContactLink> }) =>
-      api.updateContactLink(id, payload),
+    mutationFn: ({
+      id,
+      payload,
+    }: {
+      id: number;
+      payload: Partial<ContactLink>;
+    }) => api.updateContactLink(id, payload),
     onSuccess: () => {
-      queryClient.invalidateQueries({ queryKey: ['contact-links'] });
-      queryClient.invalidateQueries({ queryKey: ['admin-contact-links'] });
+      queryClient.invalidateQueries({ queryKey: ["contact-links"] });
+      queryClient.invalidateQueries({ queryKey: ["admin-contact-links"] });
     },
   });
 }
@@ -51,8 +58,8 @@ export function useDeleteContactLink() {
   return useMutation({
     mutationFn: (id: number) => api.deleteContactLink(id),
     onSuccess: () => {
-      queryClient.invalidateQueries({ queryKey: ['contact-links'] });
-      queryClient.invalidateQueries({ queryKey: ['admin-contact-links'] });
+      queryClient.invalidateQueries({ queryKey: ["contact-links"] });
+      queryClient.invalidateQueries({ queryKey: ["admin-contact-links"] });
     },
   });
 }
@@ -60,8 +67,8 @@ export function useDeleteContactLink() {
 export function useMarkMessage() {
   const queryClient = useQueryClient();
   return useMutation({
-    mutationFn: ({ id, is_read }: { id: number; is_read: boolean }) => api.updateMessage(id, is_read),
-    onSuccess: () => queryClient.invalidateQueries({ queryKey: ['messages'] }),
+    mutationFn: ({ id, is_read }: { id: number; is_read: boolean }) =>
+      api.updateMessage(id, is_read),
+    onSuccess: () => queryClient.invalidateQueries({ queryKey: ["messages"] }),
   });
 }
-

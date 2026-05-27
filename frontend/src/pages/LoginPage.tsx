@@ -1,21 +1,21 @@
-import { Lock } from 'lucide-react';
-import { FormEvent, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { Lock } from "lucide-react";
+import { FormEvent, useState } from "react";
+import { useNavigate } from "react-router-dom";
 
-import { Button } from '../components/ui/button';
-import { Card } from '../components/ui/card';
-import { Input } from '../components/ui/input';
-import { useLogin } from '../features/auth/api';
+import { Button } from "../components/ui/button";
+import { Card } from "../components/ui/card";
+import { Input } from "../components/ui/input";
+import { useLogin } from "../features/auth/api";
 
 export function LoginPage() {
   const navigate = useNavigate();
   const login = useLogin();
-  const [form, setForm] = useState({ email: '', password: '' });
+  const [form, setForm] = useState({ email: "", password: "" });
 
   async function submit(event: FormEvent) {
     event.preventDefault();
     await login.mutateAsync(form);
-    navigate('/admin');
+    navigate("/admin");
   }
 
   return (
@@ -31,7 +31,9 @@ export function LoginPage() {
             type="email"
             placeholder="Email"
             value={form.email}
-            onChange={(event) => setForm((current) => ({ ...current, email: event.target.value }))}
+            onChange={(event) =>
+              setForm((current) => ({ ...current, email: event.target.value }))
+            }
           />
           <Input
             required
@@ -39,16 +41,20 @@ export function LoginPage() {
             placeholder="Password"
             value={form.password}
             onChange={(event) =>
-              setForm((current) => ({ ...current, password: event.target.value }))
+              setForm((current) => ({
+                ...current,
+                password: event.target.value,
+              }))
             }
           />
           <Button className="w-full" type="submit" disabled={login.isPending}>
             Sign in
           </Button>
-          {login.error && <p className="text-sm text-red-600">{login.error.message}</p>}
+          {login.error && (
+            <p className="text-sm text-red-600">{login.error.message}</p>
+          )}
         </form>
       </Card>
     </main>
   );
 }
-

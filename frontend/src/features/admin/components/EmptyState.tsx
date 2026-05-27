@@ -5,4 +5,3 @@ export function EmptyState({ title }: { title: string }) {
     </div>
   );
 }
-

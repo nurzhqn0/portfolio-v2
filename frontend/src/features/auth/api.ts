@@ -1,7 +1,7 @@
-import { useMutation } from '@tanstack/react-query';
+import { useMutation } from "@tanstack/react-query";
 
-import { api } from '../../lib/api';
-import { setToken } from '../../lib/auth';
+import { api } from "../../lib/api";
+import { setToken } from "../../lib/auth";
 
 export function useLogin() {
   return useMutation({
@@ -9,4 +9,3 @@ export function useLogin() {
     onSuccess: (response) => setToken(response.access_token),
   });
 }
-

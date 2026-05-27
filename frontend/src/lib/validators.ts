@@ -1,4 +1,4 @@
-import { z } from 'zod';
+import { z } from "zod";
 
 export const contactMessageSchema = z.object({
   name: z.string().min(1).max(120),
@@ -12,4 +12,3 @@ export const projectSchema = z.object({
   description: z.string().min(1),
   tech_stack: z.array(z.string()),
 });
-

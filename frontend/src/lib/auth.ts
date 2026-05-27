@@ -1,4 +1,4 @@
-const TOKEN_KEY = 'portfolio_admin_token';
+const TOKEN_KEY = "portfolio_admin_token";
 
 export function getToken() {
   return localStorage.getItem(TOKEN_KEY);
@@ -15,4 +15,3 @@ export function clearToken() {
 export function isAuthenticated() {
   return Boolean(getToken());
 }
-

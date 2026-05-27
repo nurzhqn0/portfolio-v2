@@ -1,10 +1,11 @@
-import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
+import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 
-import { api, type Profile } from '../../lib/api';
+import { api } from "../../lib/api";
+import { Profile } from "../../types/profile";
 
 export function useProfile() {
   return useQuery({
-    queryKey: ['profile'],
+    queryKey: ["profile"],
     queryFn: api.getProfile,
   });
 }
@@ -13,7 +14,6 @@ export function useUpdateProfile() {
   const queryClient = useQueryClient();
   return useMutation({
     mutationFn: (payload: Partial<Profile>) => api.updateProfile(payload),
-    onSuccess: () => queryClient.invalidateQueries({ queryKey: ['profile'] }),
+    onSuccess: () => queryClient.invalidateQueries({ queryKey: ["profile"] }),
   });
 }
-

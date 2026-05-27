@@ -1,17 +1,19 @@
-import { ArrowRight, Sparkles } from 'lucide-react';
-import { Link } from 'react-router-dom';
+import { ArrowRight, Sparkles } from "lucide-react";
+import { Link } from "react-router-dom";
 
-import { Button } from '../components/ui/button';
-import { Footer } from '../components/layout/Footer';
-import { ProjectCard } from '../features/projects/components/ProjectCard';
-import { useProfile } from '../features/profile/api';
-import { useProjects } from '../features/projects/api';
-import { mediaUrl } from '../lib/api';
+import { Button } from "../components/ui/button";
+import { Footer } from "../components/layout/Footer";
+import { ProjectCard } from "../features/projects/components/ProjectCard";
+import { useProfile } from "../features/profile/api";
+import { useProjects } from "../features/projects/api";
+import { mediaUrl } from "../lib/api";
 
 export function LandingPage() {
   const { data: profile, isLoading: isProfileLoading } = useProfile();
   const { data: projects = [], isLoading: areProjectsLoading } = useProjects();
-  const featured = projects.filter((project) => project.is_featured).slice(0, 3);
+  const featured = projects
+    .filter((project) => project.is_featured)
+    .slice(0, 3);
   const photo = mediaUrl(profile?.landing_photo_url);
 
   if (isProfileLoading) {
@@ -49,28 +51,37 @@ export function LandingPage() {
 
             <div className="mb-8 flex items-center gap-3 text-sm font-semibold uppercase tracking-[0.18em] text-clay">
               <Sparkles size={18} className="text-brand-neon" />
-              {profile?.is_available ? 'Available for selected work' : 'Portfolio archive'}
+              {profile?.is_available
+                ? "Available for selected work"
+                : "Portfolio archive"}
             </div>
-            
-            <p className="mb-4 text-base font-semibold uppercase tracking-widest text-graphite">{profile?.name}</p>
-            
+
+            <p className="mb-4 text-base font-semibold uppercase tracking-widest text-graphite">
+              {profile?.name}
+            </p>
+
             <h1 className="max-w-4xl font-display text-[2.85rem] italic leading-[0.98] text-ink sm:text-5xl lg:text-[4.15rem]">
               {profile?.headline}
             </h1>
-            
+
             <p className="mt-7 max-w-xl text-lg leading-8 text-graphite">
               {profile?.bio}
             </p>
-            
+
             <div className="mt-9 flex flex-wrap gap-4">
               <Link to="/projects">
                 <Button className="group h-12 px-6">
                   View projects
-                  <ArrowRight size={18} className="ml-1 transition-transform group-hover:translate-x-1" />
+                  <ArrowRight
+                    size={18}
+                    className="ml-1 transition-transform group-hover:translate-x-1"
+                  />
                 </Button>
               </Link>
               <Link to="/contacts">
-                <Button variant="ghost" className="h-12 px-6">Contact</Button>
+                <Button variant="ghost" className="h-12 px-6">
+                  Contact
+                </Button>
               </Link>
             </div>
           </div>
@@ -84,25 +95,40 @@ export function LandingPage() {
         <section className="relative z-10 mx-auto max-w-7xl px-5 py-16">
           <div className="mb-12 flex items-end justify-between gap-4">
             <div>
-              <p className="mb-2 text-sm font-semibold uppercase tracking-wider text-clay">Sneak peek of my works</p>
-              <h2 className="font-display text-4xl italic text-ink md:text-5xl">Selected projects</h2>
+              <p className="mb-2 text-sm font-semibold uppercase tracking-wider text-clay">
+                Sneak peek of my works
+              </p>
+              <h2 className="font-display text-4xl italic text-ink md:text-5xl">
+                Selected projects
+              </h2>
             </div>
-            <Link to="/projects" className="group flex items-center text-sm font-semibold text-graphite transition-colors hover:text-clay">
+            <Link
+              to="/projects"
+              className="group flex items-center text-sm font-semibold text-graphite transition-colors hover:text-clay"
+            >
               All projects
-              <ArrowRight size={16} className="ml-2 -translate-x-2 opacity-0 transition-all group-hover:translate-x-0 group-hover:opacity-100" />
+              <ArrowRight
+                size={16}
+                className="ml-2 -translate-x-2 opacity-0 transition-all group-hover:translate-x-0 group-hover:opacity-100"
+              />
             </Link>
           </div>
           {areProjectsLoading ? (
             <div className="grid gap-8 md:grid-cols-3">
               {[1, 2, 3].map((item) => (
-                <div key={item} className="h-80 rounded-[24px] bg-white/70 shadow-soft" />
+                <div
+                  key={item}
+                  className="h-80 rounded-[24px] bg-white/70 shadow-soft"
+                />
               ))}
             </div>
           ) : (
             <div className="grid gap-8 md:grid-cols-3">
-              {(featured.length ? featured : projects.slice(0, 3)).map((project) => (
-                <ProjectCard key={project.id} project={project} />
-              ))}
+              {(featured.length ? featured : projects.slice(0, 3)).map(
+                (project) => (
+                  <ProjectCard key={project.id} project={project} />
+                ),
+              )}
             </div>
           )}
         </section>

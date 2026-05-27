@@ -20,8 +20,16 @@ body {
   min-width: 320px;
   min-height: 100vh;
   background:
-    radial-gradient(circle at 12% 8%, rgba(255, 199, 117, 0.34), transparent 28rem),
-    radial-gradient(circle at 86% 18%, rgba(98, 182, 203, 0.22), transparent 30rem),
+    radial-gradient(
+      circle at 12% 8%,
+      rgba(255, 199, 117, 0.34),
+      transparent 28rem
+    ),
+    radial-gradient(
+      circle at 86% 18%,
+      rgba(98, 182, 203, 0.22),
+      transparent 30rem
+    ),
     linear-gradient(180deg, #fff8ea 0%, #fffdf8 46%, #f4fbf9 100%);
   background-attachment: fixed;
 }
@@ -40,7 +48,7 @@ textarea {
 .image-field {
   background:
     linear-gradient(135deg, rgba(255, 250, 241, 0.2), rgba(98, 182, 203, 0.18)),
-    url('https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=1400&q=80');
+    url("https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=1400&q=80");
   background-position: center;
   background-size: cover;
   position: relative;
@@ -48,12 +56,20 @@ textarea {
 }
 
 .image-field::after {
-  content: '';
+  content: "";
   position: absolute;
   inset: 0;
   background:
-    linear-gradient(180deg, rgba(255,255,255,0.08), rgba(255,248,234,0.2)),
-    linear-gradient(135deg, rgba(32,48,79,0.02) 0%, rgba(255,122,61,0.12) 100%);
+    linear-gradient(
+      180deg,
+      rgba(255, 255, 255, 0.08),
+      rgba(255, 248, 234, 0.2)
+    ),
+    linear-gradient(
+      135deg,
+      rgba(32, 48, 79, 0.02) 0%,
+      rgba(255, 122, 61, 0.12) 100%
+    );
   border-radius: inherit;
   pointer-events: none;
 }
